@@ -19,9 +19,7 @@ class Text(object):
     def __init__(self, data):
         self.data = ' '.join(data.split('\n')).strip()
         self.data = re.sub('<[a-zA-Z\/][^>]*>','',self.data)
-        self.data = re.sub('-+', '-', self.data)
-        self.data = re.sub('~+', '~', self.data)
-        self.data = re.sub('=+', '=', self.data)
+        self.data = re.sub('(.)\\1{3,}', '\\1', self.data)
         
         self.offset = 0
 
